@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS `villagers`;
+
+CREATE TABLE villagers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  villager_id INTEGER NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  personality VARCHAR(255) NOT NULL,
+  birthday DATE NOT NULL,
+  species VARCHAR(255) NOT NULL,
+  hobby VARCHAR(255) NOT NULL,
+  catchphrase VARCHAR(255) NOT NULL,
+  saying VARCHAR(255) NOT NULL,
+  image VARCHAR(255) NOT NULL,
+  icon VARCHAR(255) NOT NULL,
+  bubble_color VARCHAR(255),
+  text_color VARCHAR(255)
+);

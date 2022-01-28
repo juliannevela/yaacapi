@@ -6,9 +6,17 @@
   "author": "Julianne Vela",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server.js",
-    "start:watch": "nodemon ./server.js"
+    "test": "jest --verbose --runInBand --testLocationInResults --setupFiles dotenv/config",
+    "test:watch": "npm run test -- --watch",
+    "start": "node -r dotenv/config server.js",
+    "start:watch": "nodemon -r dotenv/config server.js",
+    "setup-db": "node -r dotenv/config setup-db.js",
+    "setup-seed-data": "node -r dotenv/config ./data/seed-db.js",
+    "setup-heroku": "heroku run npm run setup-db",
+    "heroku-config": "heroku addons:create heroku-postgresql:hobby-dev --remote heroku && heroku config:set PGSSLMODE=require --remote heroku && heroku config:get DATABASE_URL --remote heroku"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "dependencies": {
     "cors": "^2.8.5",
